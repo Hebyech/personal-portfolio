@@ -1,36 +1,78 @@
 import Link from "next/link";
 
-const tags = [
-  { label: "Cursor", tint: "bg-sky-50 text-sky-700" },
-  { label: "ChatGPT", tint: "bg-emerald-50 text-emerald-700" },
-  { label: "Claude", tint: "bg-violet-50 text-violet-700" },
-  { label: "Next.js", tint: "bg-amber-50 text-amber-800" },
-  { label: "GitHub", tint: "bg-rose-50 text-rose-700" },
+const roundedBorder =
+  "rounded-[40px] border-2 border-sky-200/70 md:rounded-[48px]";
+
+function SectionCard({
+  children,
+  className = "",
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <section
+      className={`${roundedBorder} overflow-hidden bg-white/85 p-10 shadow-[0_8px_40px_rgba(14,165,233,0.08)] backdrop-blur-sm md:p-12 lg:p-14 ${className}`}
+    >
+      {children}
+    </section>
+  );
+}
+
+function SectionTitle({
+  icon,
+  title,
+}: {
+  icon: React.ReactNode;
+  title: string;
+}) {
+  return (
+    <div className="mb-6 flex items-center gap-3 md:mb-7">
+      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-sky-200/80 bg-sky-100 text-sky-600">
+        {icon}
+      </div>
+      <h2 className="text-2xl font-bold text-zinc-900 md:text-[1.65rem]">
+        {title}
+      </h2>
+    </div>
+  );
+}
+
+const tools = [
+  { icon: "✦", name: "Cursor" },
+  { icon: "◎", name: "ChatGPT" },
+  { icon: "C", name: "Claude" },
+  { icon: "▲", name: "Next.js" },
+  { icon: "→", name: "GitHub" },
 ];
 
-const skills = [
+const learning = [
   {
     title: "Cursor",
-    desc: "把 AI 写进日常开发流程",
-    tint: "bg-sky-50",
+    desc: "AI Coding workflow",
+    status: "Ongoing",
+    badge: "bg-sky-100 text-sky-700",
     icon: "✦",
   },
   {
     title: "GitHub",
-    desc: "版本管理 & 项目沉淀",
-    tint: "bg-rose-50",
+    desc: "Version control",
+    status: "Using",
+    badge: "bg-sky-100 text-sky-700",
     icon: "◎",
   },
   {
     title: "Next.js",
-    desc: "从想法到可访问的网站",
-    tint: "bg-amber-50",
+    desc: "Building websites",
+    status: "Learning",
+    badge: "bg-emerald-100 text-emerald-700",
     icon: "▲",
   },
   {
     title: "Product",
-    desc: "边做边学，用 build 理解产品",
-    tint: "bg-violet-50",
+    desc: "Learning by building",
+    status: "Learning",
+    badge: "bg-emerald-100 text-emerald-700",
     icon: "◈",
   },
 ];
@@ -56,145 +98,141 @@ const journey = [
 
 export default function AILearningPage() {
   return (
-    <main className="relative min-h-screen overflow-hidden bg-[#f7fbff] text-zinc-900">
-      <div className="pointer-events-none absolute -left-28 -top-28 h-72 w-72 rounded-full bg-sky-300 opacity-30 blur-[140px]" />
-      <div className="pointer-events-none absolute -bottom-32 -right-24 h-80 w-80 rounded-full bg-cyan-300 opacity-30 blur-[140px]" />
+    <main className="relative min-h-screen overflow-hidden bg-gradient-to-b from-[#f7fbff] via-[#f4f9ff] to-[#eef6ff] text-zinc-900">
+      <div className="pointer-events-none absolute -left-24 top-0 h-72 w-72 rounded-full bg-sky-200/50 blur-[120px]" />
+      <div className="pointer-events-none absolute -right-20 bottom-0 h-80 w-80 rounded-full bg-cyan-200/40 blur-[120px]" />
 
-      <div className="relative z-10 mx-auto max-w-4xl px-6 pb-28 pt-14 md:pt-20">
+      <div className="relative z-10 mx-auto max-w-4xl px-6 pb-24 pt-14 md:pt-20">
         <Link
           href="/projects"
-          className="mb-14 inline-flex items-center gap-2 text-zinc-500 transition hover:text-sky-600"
+          className="mb-10 inline-flex items-center gap-2 text-zinc-500 transition hover:text-sky-600 md:mb-12"
         >
           <span aria-hidden>←</span>
           Back to Projects
         </Link>
 
         {/* Hero */}
-        <header className="mb-20 grid items-start gap-10 md:mb-28 lg:grid-cols-[1fr_240px] lg:gap-12">
+        <header className="mb-12 grid items-start gap-10 md:mb-16 lg:grid-cols-[1fr_240px] lg:gap-12">
           <div>
-            <span className="mb-6 inline-block rounded-full bg-white/80 px-4 py-1.5 text-sm font-medium text-sky-600 shadow-sm">
-              Ongoing Project ✦
+            <span className="mb-5 inline-block rounded-3xl border-2 border-sky-200/70 bg-sky-100 px-5 py-2 text-sm font-medium text-sky-700 md:px-6 md:py-2.5">
+              Ongoing Project
             </span>
-
-            <h1 className="mb-5 text-[2.75rem] font-bold leading-[1.08] tracking-tight md:text-6xl">
-              AI Learning
-              <br />
-              <span className="text-sky-500">Journey</span>
+            <h1 className="mb-5 text-4xl font-bold tracking-tight md:text-5xl">
+              AI Learning Journey
             </h1>
-
-            <p className="mb-8 max-w-md text-lg leading-relaxed text-zinc-600 md:text-xl">
-              用 AI 把想法一点点变成真实的东西。
-              <br />
-              这是我的成长记录 ✨
+            <p className="max-w-lg text-lg leading-relaxed text-zinc-500 md:text-xl">
+              用 AI 把想法一点点变成真实的东西——这是我的成长记录 ✨
             </p>
-
-            <div className="flex flex-wrap gap-2.5">
-              {tags.map((tag) => (
-                <span
-                  key={tag.label}
-                  className={`rounded-xl px-4 py-2 text-sm font-medium md:text-base ${tag.tint}`}
-                >
-                  {tag.label}
-                </span>
-              ))}
-            </div>
           </div>
 
-          <aside className="rounded-[28px] bg-white/80 p-6 shadow-[0_12px_40px_rgba(14,165,233,0.1)] backdrop-blur-sm lg:mt-10">
+          <aside className={`${roundedBorder} bg-white/85 p-8 shadow-[0_8px_36px_rgba(14,165,233,0.1)] backdrop-blur-sm md:p-9 lg:mt-6`}>
             <div className="mb-4 flex items-center gap-2">
               <span className="h-2 w-2 rounded-full bg-emerald-400" aria-hidden />
               <p className="text-sm font-medium text-zinc-500">Currently learning</p>
             </div>
-
-            <p className="mb-5 text-lg font-semibold leading-snug text-zinc-800">
-              AI Coding
-              <br />
-              & Product
+            <p className="mb-5 text-lg font-semibold text-zinc-800">
+              AI Coding & Product
             </p>
-
-            <ul className="space-y-3 border-t border-zinc-100 pt-4 text-sm text-zinc-500">
-              <li className="flex items-center gap-2">
-                <span className="text-sky-400">→</span>
+            <ul className="space-y-3 border-t border-zinc-100/80 pt-4 text-sm text-zinc-500">
+              <li className="flex gap-2">
+                <span className="text-sky-500">→</span>
                 搭建个人作品集
               </li>
-              <li className="flex items-center gap-2">
-                <span className="text-sky-400">→</span>
+              <li className="flex gap-2">
+                <span className="text-sky-500">→</span>
                 探索 AI 工作流
               </li>
-              <li className="flex items-center gap-2">
-                <span className="text-sky-400">→</span>
+              <li className="flex gap-2">
+                <span className="text-sky-500">→</span>
                 记录学习过程
               </li>
             </ul>
           </aside>
         </header>
 
-        {/* About */}
-        <section className="mb-16 md:mb-20">
-          <h2 className="mb-5 text-2xl font-bold md:text-3xl">About</h2>
+        <div className="space-y-8 md:space-y-10">
+          {/* Tools */}
+          <SectionCard>
+            <SectionTitle icon={<span className="text-lg">★</span>} title="Tools I'm Using" />
+            <div className="flex flex-wrap gap-3.5 md:gap-4">
+              {tools.map((tool) => (
+                <span
+                  key={tool.name}
+                  className="inline-flex items-center gap-3 rounded-3xl border-2 border-sky-200/60 bg-white px-5 py-3 text-sm font-medium text-zinc-700 shadow-[0_4px_16px_rgba(14,165,233,0.06)] md:px-6 md:py-3.5 md:text-base"
+                >
+                  <span className="flex h-7 w-7 items-center justify-center rounded-xl border border-sky-200/70 bg-sky-100 text-xs text-sky-600">
+                    {tool.icon}
+                  </span>
+                  {tool.name}
+                </span>
+              ))}
+            </div>
+          </SectionCard>
 
-          <article className="rounded-[32px] bg-white/75 p-8 shadow-[0_8px_36px_rgba(14,165,233,0.07)] backdrop-blur-sm md:rounded-[36px] md:p-10">
-            <p className="mb-6 text-xl font-medium leading-relaxed text-zinc-800 md:text-2xl">
-              说白了，这就是我的一个「学习日记」📓
-            </p>
-
-            <div className="grid gap-5 md:grid-cols-2 md:gap-8">
-              <p className="text-base leading-[1.85] text-zinc-600 md:text-lg">
-                之前我对 coding 几乎零基础。AI 工具出现之后，我开始想：能不能不靠背语法，
-                而是靠「有想法 + 会提问」，把东西做出来？
+          {/* About */}
+          <SectionCard className="relative overflow-hidden">
+            <div className="relative z-10 max-w-xl">
+              <SectionTitle icon={<span className="text-lg">📓</span>} title="About" />
+              <p className="mb-5 text-base leading-[1.85] text-zinc-600 md:text-lg">
+                说白了，这就是我的一个「学习日记」。之前我对 coding 几乎零基础，
+                但 AI 工具出现之后，我开始认真想：能不能不靠背语法，而是靠「有想法 + 会提问」，
+                把东西做出来？
               </p>
-              <p className="text-base leading-[1.85] text-zinc-600 md:text-lg">
-                这个项目记录我怎么学 Cursor、管 GitHub、用 Next.js 搭网站——
-                以及在 build 中慢慢理解产品。不追求完美，只求每一步都真实发生。
+              <p className="text-base leading-[1.85] text-zinc-500 md:text-lg">
+                不追求完美，只求每一步都真实发生。
               </p>
             </div>
-          </article>
-        </section>
+            <div
+              className="pointer-events-none absolute -right-6 top-8 h-36 w-36 rounded-full bg-gradient-to-br from-sky-200/70 via-violet-200/50 to-cyan-200/40 blur-2xl md:right-2"
+              aria-hidden
+            />
+          </SectionCard>
 
-        {/* Learning */}
-        <section className="mb-16 md:mb-20">
-          <h2 className="mb-5 text-2xl font-bold md:text-3xl">
-            What I&apos;m Learning
-          </h2>
+          {/* Learning grid */}
+          <SectionCard>
+            <SectionTitle icon={<span className="text-lg">🚀</span>} title="What I'm Learning" />
 
-          <div className="grid gap-4 sm:grid-cols-2">
-            {skills.map((item) => (
-              <article
-                key={item.title}
-                className="rounded-[28px] bg-white/75 p-7 shadow-[0_6px_28px_rgba(14,165,233,0.06)] backdrop-blur-sm md:p-8"
-              >
-                <div
-                  className={`mb-4 flex h-11 w-11 items-center justify-center rounded-2xl text-base ${item.tint}`}
+            <div className="grid grid-cols-2 gap-5 lg:grid-cols-4 lg:gap-6">
+              {learning.map((item) => (
+                <article
+                  key={item.title}
+                  className="flex w-full min-w-0 flex-col items-center rounded-[36px] border-2 border-sky-200/60 bg-zinc-50/80 px-5 py-8 text-center md:rounded-[40px] md:px-6 md:py-9"
                 >
-                  {item.icon}
-                </div>
-                <h3 className="mb-1.5 text-xl font-semibold">{item.title}</h3>
-                <p className="text-base leading-relaxed text-zinc-500">
-                  {item.desc}
-                </p>
-              </article>
-            ))}
-          </div>
-        </section>
+                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl border border-sky-200/70 bg-sky-100 text-lg font-semibold text-sky-600">
+                    {item.icon}
+                  </div>
+                  <h3 className="mb-2 w-full break-words text-base font-semibold text-zinc-800 md:text-lg">
+                    {item.title}
+                  </h3>
+                  <p className="mb-4 w-full break-words px-1 text-xs leading-relaxed text-zinc-400 md:text-sm">
+                    {item.desc}
+                  </p>
+                  <span
+                    className={`rounded-2xl border border-sky-200/50 px-4 py-1.5 text-xs font-medium md:text-sm ${item.badge}`}
+                  >
+                    {item.status}
+                  </span>
+                </article>
+              ))}
+            </div>
+          </SectionCard>
 
-        {/* Journey */}
-        <section>
-          <h2 className="mb-5 text-2xl font-bold md:text-3xl">Journey</h2>
+          {/* Journey timeline */}
+          <SectionCard>
+            <SectionTitle icon={<span className="text-lg">🛤</span>} title="Journey" />
 
-          <article className="rounded-[32px] bg-white/75 p-8 shadow-[0_8px_36px_rgba(14,165,233,0.07)] backdrop-blur-sm md:rounded-[36px] md:p-10">
             <ol>
               {journey.map((step, index) => (
                 <li
                   key={step.title}
-                  className="relative flex gap-5 pb-8 last:pb-0 md:gap-6"
+                  className="relative flex gap-5 pb-10 last:pb-0 md:gap-6"
                 >
                   {index < journey.length - 1 && (
                     <span
-                      className="absolute left-[9px] top-5 h-[calc(100%-12px)] w-px bg-sky-200/80"
+                      className="absolute left-[9px] top-5 h-[calc(100%-8px)] w-px bg-sky-200"
                       aria-hidden
                     />
                   )}
-
                   <span
                     className={`relative z-10 mt-1 h-[18px] w-[18px] shrink-0 rounded-full border-[3px] border-white ${
                       step.active
@@ -203,27 +241,28 @@ export default function AILearningPage() {
                     }`}
                     aria-hidden
                   />
-
                   <div
-                    className={`min-w-0 flex-1 rounded-2xl px-5 py-4 md:px-6 md:py-5 ${
-                      step.active ? "bg-sky-50/80" : "bg-zinc-50/60"
+                    className={`min-w-0 flex-1 rounded-[32px] border-2 px-6 py-6 md:rounded-[36px] md:px-8 md:py-7 ${
+                      step.active
+                        ? "border-sky-200/70 bg-sky-50/90"
+                        : "border-sky-200/50 bg-zinc-50/70"
                     }`}
                   >
                     <p className="mb-1 text-sm font-medium text-sky-600">
                       {step.date}
                     </p>
-                    <h3 className="mb-1.5 text-lg font-semibold text-zinc-800 md:text-xl">
+                    <h3 className="mb-2 break-words text-lg font-semibold text-zinc-800">
                       {step.title}
                     </h3>
-                    <p className="text-sm leading-relaxed text-zinc-500 md:text-base">
+                    <p className="break-words text-sm leading-relaxed text-zinc-500 md:text-base">
                       {step.desc}
                     </p>
                   </div>
                 </li>
               ))}
             </ol>
-          </article>
-        </section>
+          </SectionCard>
+        </div>
       </div>
     </main>
   );

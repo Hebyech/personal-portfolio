@@ -1,23 +1,29 @@
 const projects = [
-    {
-      title: "AI Learning Journey",
-      description: "我的 AI 学习路线与实践记录。",
-      status: "Ongoing",
-      link: "/projects/ai-learning",
-    },
-    {
-      title: "Portfolio Website",
-      description: "个人作品集网站，从 0 到上线。",
-      status: "Building",
-      link: "/projects/portfolio-website",
-    },
-    {
-      title: "Personal Knowledge System",
-      description: "正在构建中的 AI 知识体系。",
-      status: "Coming Soon",
-      link: "/projects/knowledge-system",
-    },
-  ];
+  {
+    title: "Portfolio Website",
+    description: "个人作品集网站，从 0 到上线。",
+    status: "Building",
+    link: "/projects/portfolio-website",
+  },
+  {
+    title: "Campus Marketplace",
+    description: "校园二手交易平台项目。",
+    status: "Planned",
+    link: "/projects/campus-marketplace",
+  },
+  {
+    title: "Freshman Navigation Agent",
+    description: "帮助大一新生适应大学生活的 AI 领航 Agent。",
+    status: "Building",
+    link: "/projects/freshman-agent",
+  },
+  {
+    title: "AI Knowledge System",
+    description: "正在构建中的 AI 知识体系。",
+    status: "Coming Soon",
+    link: "/projects/knowledge-system",
+  },
+];
   
   export default function ProjectsPage() {
     return (

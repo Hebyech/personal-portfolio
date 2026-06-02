@@ -48,9 +48,12 @@ export default function Home() {
           >
             Projects
           </a>
-            <button className="border border-zinc-300 px-7 py-4 rounded-full hover:bg-zinc-100 transition duration-300">
-              About Me
-            </button>
+          <a
+            href="/about"
+            className="border border-zinc-300 px-7 py-4 rounded-full hover:bg-zinc-100 transition"
+          >
+            About Me
+          </a>
           </div>
         </div>
       </section>
